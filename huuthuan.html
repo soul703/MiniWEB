@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhân Vật "Bí Ẩn": Hữu Thuận</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&family=Architects+Daughter&display=swap');
+
+    :root {
+      --primary-text: #444;
+      --secondary-text: #666;
+      --accent-warning: #ffcc00; /* Vàng cảnh báo - "báo" */
+      --accent-it: #007bff; /* Xanh IT */
+      --accent-food: #e74c3c; /* Đỏ - "ăn nhiều" */
+      --bg-color: #fdfcdc; /* Vàng kem nhạt - như giấy cũ, bí ẩn */
+      --card-bg: #fffacd; /* Lemon Chiffon - vàng nhạt hơn */
+      --shadow: rgba(0, 0, 0, 0.1);
+      --border-dashed: #ccc;
+    }
+
+    body {
+      font-family: 'Patrick Hand', cursive; /* Font chữ viết tay, ngộ nghĩnh */
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 30px 35px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 0px var(--accent-warning), 0 8px 20px var(--shadow); /* Bóng đổ "cảnh báo" */
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      border: 3px dashed var(--border-dashed); /* Viền đứt đoạn, như hồ sơ "điều tra" */
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dấu chấm than "Báo" */
+    .profile-card::before {
+      content: '❗BÁO❗';
+      font-family: 'Bangers', cursive;
+      font-size: 3em;
+      color: var(--accent-warning);
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000; /* Viền đen cho chữ */
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transform: rotate(15deg);
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+
+    .profile-card img.avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px auto 15px auto;
+      border: 4px solid var(--accent-it); /* Viền xanh IT */
+      padding: 3px; /* Tạo khoảng cách giữa ảnh và viền */
+      background-color: white; /* Nền trắng cho ảnh */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-card h1 {
+      font-family: 'Bangers', cursive; /* Font chữ comic, mạnh mẽ */
+      font-size: 3.5em;
+      color: var(--primary-text);
+      margin-bottom: 0;
+      letter-spacing: 2px;
+    }
+
+    .profile-card .subtitle {
+      font-family: 'Architects Daughter', cursive;
+      font-size: 1.3em;
+      color: var(--secondary-text);
+      margin-bottom: 15px;
+    }
+
+    .info-section {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: rgba(255,255,255,0.5); /* Nền hơi trong */
+      border-radius: 8px;
+      border: 1px solid var(--border-dashed);
+      text-align: left;
+    }
+
+    .info-section h3 {
+      font-family: 'Architects Daughter', cursive;
+      font-size: 1.5em;
+      color: var(--primary-text);
+      margin-top: 0;
+      margin-bottom: 10px;
+      display: flex; /* Cho icon và text thẳng hàng */
+      align-items: center; /* Căn giữa theo chiều dọc */
+    }
+    .info-section h3 .icon {
+      font-size: 1.3em;
+      margin-right: 10px;
+    }
+
+    .info-section p {
+      margin-bottom: 8px;
+      font-size: 1.1em;
+    }
+    .info-section .highlight {
+      font-weight: bold;
+      color: var(--accent-food); /* Màu đỏ cho "ăn nhiều, tốn kém" */
+    }
+    .info-section .it-guy {
+      color: var(--accent-it);
+      font-weight: bold;
+    }
+    .info-section .special-status {
+      font-style: italic;
+      color: var(--primary-text);
+    }
+
+    .warning-message {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: var(--accent-warning);
+      color: #333;
+      border-radius: 8px;
+      font-family: 'Bangers', cursive;
+      font-size: 1.4em;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 0px white;
+    }
+    .warning-message .stress {
+      font-size: 1.5em; /* To hơn cho từ "RẤT" */
+      color: var(--accent-food);
+    }
+
+
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background-color: var(--secondary-text);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-family: 'Architects Daughter', cursive;
+      font-size: 1.2em;
+      border: 2px outset #999;
+    }
+
+    .back-link:hover {
+      background-color: var(--primary-text);
+      transform: scale(1.05);
+      border-style: inset;
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-card">
+  <img class="avatar" src="img/huuthuan_avatar_placeholder.png" alt="Ảnh đại diện Hữu Thuận (nếu có)">
+
+  <h1>HỮU THUẬN</h1>
+  <p class="subtitle">"Nhân Vật Báo Thủ Đặc Biệt"</p>
+
+  <div class="info-section">
+    <h3><span class="icon">🎂</span>Ngày sinh:</h3>
+    <p>Một ẩn số của vũ trụ (Không rõ)</p>
+  </div>
+
+  <div class="info-section">
+    <h3><span class="icon">💻</span>Nghề nghiệp & Danh phận:</h3>
+    <p>Sinh viên <span class="it-guy">IT</span> (tương lai của ngành công nghệ... hoặc không)</p>
+    <p>Bạn trai của <strong style="color: var(--accent-power);">Đinh Thị Hiếu Thảo</strong> (một kỳ tích!)</p>
+  </div>
+
+  <div class="info-section">
+    <h3><span class="icon">🚩</span>Tính cách chủ đạo:</h3>
+    <p><strong style="color: var(--accent-warning); font-size: 1.2em;">BÁO CHỦ WEB</strong> (Không cần giải thích thêm!)</p>
+  </div>
+
+  <div class="info-section">
+    <h3><span class="icon">🏆</span>Đặc Quyền & "Đóng Góp":</h3>
+    <p class="special-status">Không phải người trong nhà nhưng được <strong>"đặc cách" ở ké</strong>.</p>
+    <p>Đóng góp chính: Làm phong phú thêm thực đơn hàng ngày bằng cách... <span class="highlight">ĂN RẤT NHIỀU!</span></p>
+    <p>Chi phí phát sinh: <span class="highlight" style="font-size: 1.3em;">RẤT TỐN KÉM!!!</span> 💸💸💸</p>
+  </div>
+
+  <div class="warning-message">
+    CHỦ WEB ĐANG <span class="stress">RẤT</span> CĂNG THẲNG VÌ CHI PHÍ!
+  </div>
+
+  <a href="index.html" class="back-link">« Trốn Về Trang Chủ (Trước Khi Thuận lại đói!!!)</a>
+</div>
+
+</body>
+</html>

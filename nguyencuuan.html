@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile "Đỉnh Cao": Nguyễn Cửu An</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&family=Indie+Flower&display=swap');
+
+    :root {
+      --primary-text: #2d2d2d;
+      --secondary-text: #5a5a5a;
+      --accent-praise: #ffd700; /* Vàng gold - màu của lời khen "vàng ngọc" */
+      --accent-dream: #8a2be2; /* Tím - màu của ước mơ "kỳ lạ" */
+      --bg-color: #f4f1ea; /* Be nhạt, hơi cổ điển */
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --border-color: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 30px 35px;
+      border-radius: 15px; /* Bo góc vừa phải */
+      box-shadow: 0 8px 25px var(--shadow);
+      width: 100%;
+      max-width: 620px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden; /* Cho các element trang trí */
+    }
+
+    /* Hoa văn góc trang trí */
+    .profile-card::before, .profile-card::after {
+      content: '⚜️'; /* Fleur-de-lis, biểu tượng quý phái (chút mỉa mai) */
+      font-size: 2.5em;
+      color: var(--accent-praise);
+      opacity: 0.3;
+      position: absolute;
+      z-index: 0;
+    }
+    .profile-card::before { top: 15px; left: 15px; transform: rotate(-45deg); }
+    .profile-card::after { bottom: 15px; right: 15px; transform: rotate(135deg); }
+
+
+    .profile-card img.avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 15px auto 20px auto;
+      border: 5px solid var(--card-bg); /* Tạo hiệu ứng nổi */
+      box-shadow: 0 0 0 4px var(--accent-praise), 0 5px 15px rgba(0,0,0,0.2); /* Viền vàng và bóng */
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-card h1 {
+      font-family: 'Playfair Display', serif; /* Font chữ sang trọng, cổ điển */
+      font-size: 2.8em;
+      color: var(--primary-text);
+      margin-bottom: 3px;
+    }
+
+    .profile-card .dob, .profile-card .occupation {
+      font-size: 1.1em;
+      color: var(--secondary-text);
+      margin-bottom: 10px;
+    }
+    .profile-card .occupation strong {
+      font-weight: 700;
+      color: #34a853; /* Màu xanh lá cho kế toán */
+    }
+
+    .section {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6em;
+      color: var(--primary-text);
+      margin-bottom: 15px;
+      display: inline-block;
+      position: relative;
+    }
+    .section-title::after { /* Gạch chân cách điệu */
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background-color: var(--accent-praise);
+    }
+
+
+    .praise-mastery {
+      background-color: #fffbeb; /* Nền vàng kem cho "thảo mai" */
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 1px solid var(--accent-praise);
+    }
+    .praise-mastery h3 {
+      font-family: 'Indie Flower', cursive; /* Font chữ viết tay vui nhộn */
+      font-size: 1.5em;
+      color: var(--accent-praise);
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .praise-mastery p {
+      margin-bottom: 8px;
+      font-size: 1.05em;
+    }
+    .praise-mastery .highlight {
+      font-weight: bold;
+      color: #c78600; /* Vàng đậm hơn */
+    }
+
+    .life-goal {
+      background: linear-gradient(135deg, #667eea, var(--accent-dream)); /* Gradient tím */
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+    }
+    .life-goal h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7em;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    .life-goal .dream {
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.8em; /* Làm cho ước mơ to hơn */
+      line-height: 1.3;
+      margin: 0;
+      font-weight: bold;
+    }
+    .life-goal .dream .prison-emoji {
+      font-size: 1.5em; /* Emoji to hơn */
+      vertical-align: middle;
+    }
+
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: var(--secondary-text);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    .back-link:hover {
+      background-color: var(--primary-text);
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-card">
+  <img class="avatar" src="img/cuuan_avatar_placeholder.png" alt="Ảnh đại diện Nguyễn Cửu An">
+
+  <h1>Nguyễn Cửu An</h1>
+  <p class="dob">🗓️ Sinh ngày: 06/01/2005</p>
+  <p class="occupation">🎓 Nghề nghiệp: Sinh viên ngành <strong>Kế Toán</strong> (tương lai của những con số!)</p>
+
+  <div class="section">
+    <h2 class="section-title">"Nghệ Thuật" Thảo Mai Đỉnh Cao</h2>
+    <div class="praise-mastery">
+      <h3>Bậc Thầy Khen Ngợi 🌟</h3>
+      <p><span class="highlight">Thảo mai nhất nhà:</span> Không một ai qua mặt được!</p>
+      <p><span class="highlight">Gặp gì cũng khen:</span> Từ cái lá rơi đến vũ trụ bao la.</p>
+      <p><span class="highlight">Khen bất chấp:</span> Đúng sai không quan trọng, quan trọng là khen!</p>
+      <p><span class="highlight">Khen vì "sự nghiệp":</span> Mỗi lời khen là một bước tiến trong "cơm áo gạo tiền".</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Ước Mơ "Chấn Động"</h2>
+    <div class="life-goal">
+      <h3>Mục Tiêu Tối Thượng 🎯</h3>
+      <p class="dream">
+        "Ước mơ một ngày được <span class="prison-emoji">⛓️</span> đi tù <span class="prison-emoji">⛓️</span> để được ngồi... <span style="font-size: 1.5em; color: var(--accent-praise);">MÂM 1</span>!"
+      </p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Trở Về Thế Giới "Bình Thường"</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ Sơ "Tối Mật": BÙI MẠNH SANG (Chủ Web)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Press+Start+2P&family=Caveat+Brush&display=swap');
+
+    :root {
+      --primary-text: #212121; /* Đen đậm */
+      --secondary-text: #757575; /* Xám */
+      --accent-main: #0d47a1; /* Xanh dương đậm - màu của "quyền lực ngầm" */
+      --accent-hate: #d32f2f; /* Đỏ cảnh báo - "ghét Thúy" */
+      --bg-color: #eceff1; /* Xám xanh nhạt */
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.2);
+      --border-color: #90a4ae; /* Xám xanh đậm hơn cho viền */
+      --code-font: 'Press Start 2P', cursive; /* Font pixel cho IT */
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: filter 0.3s ease-out; /* Cho hiệu ứng mờ toàn trang */
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 30px 35px;
+      border-radius: 6px;
+      box-shadow: 0 8px 25px var(--shadow);
+      width: 100%;
+      max-width: 600px;
+      border: 2px solid var(--border-color);
+      position: relative;
+      text-align: center;
+    }
+
+    .profile-card::after {
+      content: 'CONFIDENTIAL';
+      font-family: var(--code-font);
+      font-size: 3.5em;
+      color: var(--border-color);
+      opacity: 0.1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      z-index: 0;
+      pointer-events: none;
+      letter-spacing: 2px;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-card img.avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px auto 15px auto;
+      border: 4px solid var(--accent-main);
+      padding: 3px;
+      background-color: #e0e0e0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .profile-card .avatar-caption {
+      font-size: 0.85em;
+      color: var(--secondary-text);
+      margin-top: -10px;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .profile-card h1 {
+      font-family: var(--code-font);
+      font-size: 2.2em;
+      color: var(--accent-main);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      word-spacing: -5px;
+    }
+
+    .profile-card .title-webmaster {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.3em;
+      color: var(--secondary-text);
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .info-section {
+      margin-bottom: 20px;
+      padding: 15px 0;
+      border-bottom: 1px dashed #bdbdbd;
+      text-align: left;
+    }
+    .info-section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-section dt {
+      font-weight: 700;
+      color: var(--primary-text);
+      margin-bottom: 4px;
+      font-size: 1.1em;
+    }
+    .info-section dt .icon {
+      margin-right: 8px;
+      color: var(--accent-main);
+    }
+
+    .info-section dd {
+      margin-left: 25px;
+      margin-bottom: 10px;
+      font-size: 1em;
+      color: var(--secondary-text);
+    }
+    .info-section dd.highlight-special {
+      font-family: 'Caveat Brush', cursive;
+      font-size: 1.5em;
+      color: var(--accent-main);
+      text-align: center;
+      padding: 10px;
+      background-color: #e3f2fd;
+      border-radius: 4px;
+      margin-left: 0;
+    }
+
+    /* CSS đã cập nhật cho dd.hate-thuy */
+    .info-section dd.hate-thuy {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1.05em;
+      color: var(--accent-hate);
+      text-align: center;
+      padding: 15px;
+      border: 3px dashed var(--accent-hate);
+      border-radius: 5px;
+      margin-top: 15px;
+      margin-left: 0;
+      line-height: 1.5;
+      word-spacing: -4px;
+      background-color: #fff0f0;
+      box-shadow: 0 0 15px rgba(211, 47, 47, 0.3);
+      animation: pulseHate 1.5s infinite ease-in-out;
+      cursor: not-allowed; /* Thêm con trỏ "cấm" khi hover */
+    }
+
+    @keyframes pulseHate {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(211, 47, 47, 0.3);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 25px rgba(211, 47, 47, 0.5);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(211, 47, 47, 0.3);
+      }
+    }
+
+    .info-section dd.hate-thuy strong.warning-title {
+      display: block;
+      font-size: 0.9em;
+      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--accent-hate), 0 0 20px var(--accent-hate);
+    }
+
+    .info-section dd.hate-thuy .blink-thuy { /* Class cho hiệu ứng nhấp nháy tên "THÚY" */
+      /* animation: blinkText 0.7s infinite alternate; Bỏ animation ở đây, JS sẽ toggle class này */
+      /* CSS sẽ chỉ định nghĩa trạng thái nhấp nháy */
+      transition: opacity 0.35s ease-in-out; /* Để toggle opacity mượt hơn */
+    }
+    .info-section dd.hate-thuy .blink-thuy.is-blinking { /* Class được JS thêm vào */
+      opacity: 0.4;
+    }
+
+
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background-color: var(--accent-main);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.95em;
+    }
+
+    .back-link:hover {
+      background-color: #0b3c85;
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-card">
+  <div class="content-wrapper">
+    <img class="avatar" src="img/buimanhsang_avatar.png" alt="[Hình ảnh chủ web - Có thể là placeholder]">
+    <p class="avatar-caption">(Ảnh minh họa, người thật có thể... bình thường hơn)</p>
+
+    <h1>BUI MANH SANG</h1>
+    <p class="title-webmaster">[[ CHỦ NHÂN CỦA TRANG WEB NÀY ]]</p>
+
+    <dl class="info-section">
+      <dt><span class="icon">📅</span>NGÀY SINH:</dt>
+      <dd>Thông tin này... có quan trọng không nhỉ?</dd>
+    </dl>
+
+    <dl class="info-section">
+      <dt><span class="icon">💼</span>NGHỀ NGHIỆP CHÍNH THỨC:</dt>
+      <dd>Người tạo ra và quản lý những dòng code bạn đang thấy (và cả những "drama" trong các profile khác).</dd>
+    </dl>
+
+    <dl class="info-section">
+      <dt><span class="icon">✨</span>ĐIỀU ĐẶC BIỆT NHẤT:</dt>
+      <dd class="highlight-special">
+        KHÔNG CÓ GÌ ĐẶC BIỆT CẢ! <br>
+        <em>(Thật đấy, đừng cố tìm nữa!)</em>
+      </dd>
+    </dl>
+
+    <dl class="info-section">
+      <dt><span class="icon" style="color: var(--accent-hate);">🚩</span>LƯU Ý CỰC KỲ QUAN TRỌNG:</dt>
+      <dd class="hate-thuy">
+        <strong class="warning-title">** CẢNH BÁO ĐỎ - MỨC ĐỘ NGUY HIỂM CAO NHẤT **</strong> <br>
+        CỰC KỲ, CỰC KỲ GHÉT BẤT CỨ AI CÓ TÊN LÀ "<span id="thuyNameTarget" class="blink-thuy">THŨY</span>" !!! <br> <!-- Thêm class blink-thuy ban đầu -->
+        (Lý do: Vấn đề an ninh quốc gia. Miễn bình luận thêm.)
+      </dd>
+    </dl>
+
+    <a href="index.html" class="back-link">« TRỞ LẠI TRANG CHÍNH (ĐỂ XEM PROFILE NGƯỜI KHÁC)</a>
+  </div>
+</div>
+
+<script>
+  const thuyNameTarget = document.getElementById('thuyNameTarget');
+  if (thuyNameTarget) {
+    setInterval(() => {
+      // Toggle class 'is-blinking' để CSS xử lý opacity
+      thuyNameTarget.classList.toggle('is-blinking');
+    }, 350); // Giảm thời gian để nhấp nháy nhanh hơn, khớp với transition
+  }
+
+  const hateThuySection = document.querySelector('dd.hate-thuy');
+  if (hateThuySection) {
+    hateThuySection.addEventListener('mouseenter', () => {
+      document.body.style.filter = 'grayscale(60%) brightness(0.8)'; // Tăng hiệu ứng khi hover
+    });
+    hateThuySection.addEventListener('mouseleave', () => {
+      document.body.style.filter = 'none';
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khám Phá Hồ Sơ "Bí Ẩn" ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&family=Caveat:wght@700&display=swap');
+
+    :root {
+      --primary-color: #6a11cb; /* Tím đậm */
+      --secondary-color: #2575fc; /* Xanh dương */
+      --accent-color: #ff6f91; /* Hồng san hô */
+      --warning-color: #ff6b6b; /* Màu "cảnh báo" cho Thúy */
+      --text-color: #333;
+      --light-text-color: #f8f9fa;
+      --bg-color: #f0f2f5;
+      --card-bg-color: #ffffff;
+      --shadow-color: rgba(0, 0, 0, 0.15);
+      --input-border-color: #ced4da;
+      --input-focus-border-color: var(--secondary-color);
+      --suggestion-bg: #e9ecef;
+      --suggestion-hover-bg: #d1d9e0;
+      --suggestion-thuy-hover-bg: #ffcdd2; /* Màu hover riêng cho Thúy */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: sparkle 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes sparkle {
+      from { background-position: 0 0; }
+      to { background-position: -400px -400px; }
+    }
+
+    .container {
+      background-color: var(--card-bg-color);
+      padding: 35px 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px var(--shadow-color);
+      width: 100%;
+      max-width: 580px; /* Tăng nhẹ kích thước */
+      text-align: center;
+      z-index: 1;
+      animation: fadeInScaleUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInScaleUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 30px;
+      font-size: 3em; /* Tăng kích thước tiêu đề một chút */
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .search-area label {
+      font-size: 1.2em; /* Tăng kích thước label */
+      margin-bottom: 12px;
+      display: block;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .search-area input[type="text"] {
+      width: 100%;
+      padding: 15px 20px; /* Tăng padding */
+      margin-bottom: 20px;
+      border: 2px solid var(--input-border-color);
+      border-radius: 12px; /* Bo tròn hơn */
+      font-size: 1.05em;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-area input[type="text"]:focus {
+      border-color: var(--input-focus-border-color);
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(37, 117, 252, 0.3); /* Tăng hiệu ứng focus */
+    }
+
+    .search-area button {
+      background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+      color: var(--light-text-color);
+      padding: 15px 30px; /* Tăng padding */
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.15em; /* Tăng kích thước chữ nút */
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .search-area button:hover {
+      transform: translateY(-3px) scale(1.03); /* Tăng hiệu ứng hover */
+      box-shadow: 0 7px 22px rgba(0,0,0,0.2);
+    }
+    .search-area button:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    .friend-suggestions {
+      margin-top: 25px; /* Tăng khoảng cách */
+      font-size: 1em;
+      color: var(--text-color);
+      line-height: 1.8; /* Cho các gợi ý nếu xuống dòng */
+    }
+
+    .friend-suggestions span {
+      cursor: pointer;
+      margin: 0 7px 8px 0;
+      padding: 6px 12px; /* Tăng padding gợi ý */
+      background-color: var(--suggestion-bg);
+      border-radius: 10px; /* Bo tròn hơn */
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+      display: inline-block;
+      border: 1px solid transparent;
+      font-weight: 500;
+    }
+
+    .friend-suggestions span:hover {
+      background-color: var(--secondary-color);
+      color: var(--light-text-color);
+      border-color: var(--primary-color);
+      transform: scale(1.08) rotate(-2deg); /* Thêm hiệu ứng xoay nhẹ */
+    }
+
+    /* Hiệu ứng đặc biệt cho gợi ý tên "Nguyễn Thị Thúy" */
+    .friend-suggestions span.thuy-special-suggestion {
+      border-color: var(--warning-color);
+      background-color: #fff0f0; /* Nền hồng nhạt hơn */
+      color: var(--warning-color); /* Chữ màu cảnh báo */
+      font-family: 'Caveat', cursive; /* Font chữ đặc biệt */
+      font-size: 1.2em; /* To hơn một chút */
+    }
+    .friend-suggestions span.thuy-special-suggestion:hover {
+      background-color: var(--warning-color);
+      color: white;
+      border-color: darken(var(--warning-color), 10%);
+      transform: scale(1.1) rotate(3deg) translateX(5px); /* Hiệu ứng "nổi loạn" hơn */
+    }
+
+
+    .error-message {
+      background-color: #ffebee;
+      color: #c62828;
+      margin-top: 25px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-weight: 500;
+      border-left: 6px solid #c62828; /* Viền dày hơn */
+      animation: shake 0.5s;
+      display: none;
+      font-size: 1.05em;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); } /* Rung mạnh hơn */
+      20%, 40%, 60%, 80% { transform: translateX(6px); }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-animation">
+  <div class="circle"></div> <div class="circle"></div> <div class="circle"></div>
+  <div class="circle"></div> <div class="circle"></div>
+</div>
+
+<div class="container">
+  <h1>Khám Phá Bạn Bè</h1>
+  <div class="search-area">
+    <label for="friendNameInput">Ai là "người được chọn" hôm nay?</label>
+    <input type="text" id="friendNameInput" placeholder="Gõ tên và khám phá nào...">
+    <button onclick="redirectToFriendProfile()">Bật Mí Ngay!</button>
+  </div>
+
+  <div class="friend-suggestions" id="friendSuggestions">
+    <!-- Tên gợi ý sẽ được thêm vào đây bằng JavaScript -->
+  </div>
+
+  <div id="errorMessage" class="error-message">
+    <!-- Thông báo lỗi sẽ hiện ở đây -->
+  </div>
+</div>
+
+<script>
+  // Dữ liệu ánh xạ tên bạn bè với tên tệp HTML của họ
+  const friendPages = {
+    "đinh thị hiếu thảo": "dinhthihieuthao.html",
+    "trần thủy tiên": "tranthuytien.html",
+    "hữu thuận": "huuthuan.html",
+    "ngọc hiền": "ngochien.html",
+    "nguyễn cửu an": "nguyencuuan.html",
+    "nguyễn thị thũy": "nguyenthithuy.html" ,
+    "hằng tiến": "hangtien.html",
+    "bùi mạnh sang": "buimanhsang.html", // Hoặc "chủ web", "admin", etc.
+    "võ thị kim ngân": "vothikimngan.html"// THÊM THÚY VÀO ĐÂY
+  };
+
+  // Dữ liệu để tìm kiếm (nếu cần mở rộng tìm theo nickname/tên đầy đủ)
+  const friendsDetailsForSearch = {
+    "hữu thuận": { fullName: "Hữu Thuận", nickname: "Thuận Báo" },
+    "trần thủy tiên": { fullName: "Trần Thủy Tiên", nickname: "Tiên Bí Ẩn" },
+    "đinh thị hiếu thảo": { fullName: "Đinh Thị Hiếu Thảo", nickname: "Thảo Tài chính" },
+    "ngọc hiền": { fullName: "Ngọc Hiền", nickname: "Hiền Yêu Bồ" },
+    "nguyễn cửu an": { fullName: "Nguyễn Cửu An", nickname: "An Thảo Mai" },
+     "võ thị kim ngân": { fullName: "Võ Thị Kim Ngân", nickname: "Ngân Sales" },
+    "bùi mạnh sang": { fullName: "Bùi Mạnh Sang", nickname: "Ông Chủ Web" },
+    "hằng tiến": { fullName: "Lê Thúy Hằng & Quốc Tiến", nickname: "Cặp Đôi Hạnh Phúc" },
+    "nguyễn thị thũy": { fullName: "Nguyễn Thị Thũy", nickname: "Thúy Khó Ở" } // Biệt danh cho Thúy
+  };
+
+  const friendNameInput = document.getElementById('friendNameInput');
+  const errorMessageDiv = document.getElementById('errorMessage');
+  const friendSuggestionsDiv = document.getElementById('friendSuggestions');
+
+  function populateSuggestions() {
+    const names = Object.keys(friendPages);
+    friendSuggestionsDiv.innerHTML = "<strong>Gợi ý nóng hổi:</strong> "; // Thêm chút nhấn mạnh
+    names.forEach(nameKey => { // Đổi tên biến 'name' thành 'nameKey' để rõ ràng hơn
+      const span = document.createElement('span');
+      const displayName = nameKey.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      span.textContent = displayName;
+
+      // Hiệu ứng đặc biệt cho "Nguyễn Thị Thúy"
+      if (nameKey.toLowerCase() === "nguyễn thị thúy") {
+        span.classList.add('thuy-special-suggestion');
+        span.innerHTML = `⚠️ ${displayName} ⚠️`; // Thêm icon cảnh báo
+      }
+
+      span.onclick = () => {
+        friendNameInput.value = nameKey; // Giữ nguyên key chữ thường để tìm kiếm
+        redirectToFriendProfile();
+      };
+      friendSuggestionsDiv.appendChild(span);
+    });
+  }
+
+  function redirectToFriendProfile() {
+    const inputNameRaw = friendNameInput.value.trim();
+    const inputName = inputNameRaw.toLowerCase();
+
+    errorMessageDiv.style.display = 'none';
+    errorMessageDiv.classList.remove('shake');
+
+    if (!inputName) {
+      showError("Ối! Bạn chưa nhập tên nào cả. Ai đây, ai đây?");
+      return;
+    }
+
+    let targetPage = null;
+    if (friendPages[inputName]) {
+      targetPage = friendPages[inputName];
+    } else {
+      for (const key in friendsDetailsForSearch) {
+        const details = friendsDetailsForSearch[key];
+        if ( (details.fullName && details.fullName.toLowerCase().includes(inputName)) ||
+          (details.nickname && details.nickname.toLowerCase().includes(inputName)) ) {
+          targetPage = friendPages[key];
+          break;
+        }
+      }
+    }
+
+    if (targetPage) {
+      document.body.classList.add('page-transition-out');
+      setTimeout(() => {
+        window.location.href = targetPage;
+      }, 500);
+    } else {
+      showError(`Hừm... "${inputNameRaw}" là ai thế nhỉ? Tên này lạ quá! Thử xem gợi ý nhé.`);
+    }
+  }
+
+  function showError(message) {
+    errorMessageDiv.textContent = message;
+    errorMessageDiv.style.display = 'block';
+    void errorMessageDiv.offsetWidth; // Trigger reflow
+    errorMessageDiv.classList.add('shake');
+  }
+
+  friendNameInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      redirectToFriendProfile();
+    }
+  });
+
+  friendNameInput.addEventListener('focus', () => {
+    document.querySelector('.search-area label').style.color = 'var(--secondary-color)';
+  });
+  friendNameInput.addEventListener('blur', () => {
+    document.querySelector('.search-area label').style.color = 'var(--primary-color)';
+  });
+
+  populateSuggestions();
+</script>
+
+<!-- CSS cho hiệu ứng vòng tròn nền (giữ nguyên) -->
+<style>
+  .bg-animation { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+  .bg-animation .circle { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.08); animation: moveCircle 25s linear infinite; bottom: -150px; }
+  .bg-animation .circle:nth-child(1) { width: 80px; height: 80px; left: 15%; animation-duration: 20s; animation-delay: 0s; }
+  .bg-animation .circle:nth-child(2) { width: 130px; height: 130px; left: 35%; animation-duration: 30s; animation-delay: 2s; }
+  .bg-animation .circle:nth-child(3) { width: 50px; height: 50px; left: 70%; animation-duration: 15s; animation-delay: 4s; }
+  .bg-animation .circle:nth-child(4) { width: 100px; height: 100px; left: 85%; animation-duration: 22s; animation-delay: 1s; }
+  .bg-animation .circle:nth-child(5) { width: 60px; height: 60px; left: 5%; animation-duration: 28s; animation-delay: 3s; }
+  @keyframes moveCircle { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; } }
+  body.page-transition-out { opacity: 0; transform: scale(0.95); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+</style>
+</body>
+</html>

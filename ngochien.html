@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Tình Yêu & Sức Khỏe: Ngọc Hiền</title> <!-- Sửa title một chút -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Raleway:wght@400;700&family=Comfortaa:wght@700&display=swap');
+
+    :root {
+      --primary-text: #4a4a4a;
+      --secondary-text: #7b7b7b;
+      --love-color-1: #ff7eb9; /* Hồng lãng mạn */
+      --love-color-2: #ff6090; /* Hồng đậm hơn */
+      --pharma-color: #00c9b8; /* Xanh ngọc cho ngành dược */
+      --bg-color: #fff0f5; /* Lavender Blush - nền hồng rất nhạt */
+      --card-bg: #ffffff;
+      --shadow: rgba(255, 126, 185, 0.2); /* Bóng đổ màu hồng */
+      --border-color: #ffe4e1; /* Misty Rose - viền nhẹ nhàng */
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 35px 40px;
+      border-radius: 25px; /* Bo góc mềm mại */
+      box-shadow: 0 10px 30px var(--shadow);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      border: 2px solid var(--border-color);
+      position: relative;
+      overflow: hidden; /* Cho các trái tim bay */
+    }
+
+    .heart-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; /* Không bắt sự kiện chuột */
+      z-index: 0;
+    }
+    .heart-bg span {
+      position: absolute;
+      font-size: 1.5em; /* Kích thước trái tim */
+      color: var(--love-color-1);
+      opacity: 0;
+      animation: floatHeart 8s ease-in-out infinite;
+    }
+    .heart-bg span:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .heart-bg span:nth-child(2) { top: 70%; left: 20%; animation-delay: 1s; font-size: 1.2em; }
+    .heart-bg span:nth-child(3) { top: 20%; left: 80%; animation-delay: 2s; }
+    .heart-bg span:nth-child(4) { top: 50%; left: 50%; animation-delay: 3s; font-size: 1.8em; color: var(--love-color-2); }
+    .heart-bg span:nth-child(5) { top: 85%; left: 65%; animation-delay: 0.5s; }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+      25% { opacity: 0.5; }
+      50% { transform: translateY(-20px) scale(1.1); opacity: 0.7; }
+      75% { opacity: 0.5; }
+      100% { transform: translateY(20px) scale(0.8); opacity: 0; }
+    }
+
+
+    .profile-card .content-wrapper {
+      position: relative; /* Để nội dung nổi lên trên hiệu ứng nền */
+      z-index: 1;
+    }
+
+    .profile-card img.avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px auto 15px auto;
+      border: 6px solid var(--card-bg);
+      box-shadow: 0 0 0 5px var(--love-color-1), 0 6px 20px rgba(255,126,185,0.3); /* Viền hồng và bóng hồng */
+    }
+
+    .profile-card h1 {
+      font-family: 'Sacramento', cursive; /* Font chữ viết tay lãng mạn */
+      font-size: 4em; /* Tên to, bay bổng */
+      color: var(--love-color-2);
+      margin-bottom: 0px;
+      line-height: 1;
+    }
+
+    .profile-card .dob, .profile-card .occupation {
+      font-size: 1.15em;
+      color: var(--secondary-text);
+      margin-bottom: 10px;
+    }
+    .profile-card .occupation strong {
+      font-weight: 700;
+      color: var(--pharma-color);
+      font-family: 'Comfortaa', cursive;
+    }
+
+    .section {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--border-color);
+    }
+    .section:first-of-type { /* Bỏ border-top cho section đầu tiên nếu có */
+      border-top: none;
+      padding-top: 0;
+    }
+
+
+    .section-title {
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.7em;
+      color: var(--love-color-1);
+      margin-bottom: 15px;
+      display: inline-block;
+      position: relative;
+    }
+    .section-title::after { /* Gạch chân hình trái tim nhỏ */
+      content: '❤';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8em;
+      color: var(--love-color-2);
+    }
+
+    .life-philosophy {
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1); /* Gradient hồng nhạt */
+      padding: 20px 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--love-color-1);
+    }
+    .life-philosophy h3 {
+      font-family: 'Sacramento', cursive;
+      font-size: 2.5em; /* To hơn cho tiêu đề "triết lý" */
+      color: var(--love-color-2);
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .life-philosophy p {
+      margin-bottom: 8px;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+    .life-philosophy .highlight {
+      font-weight: bold;
+      color: var(--love-color-2);
+      font-size: 1.2em; /* Nhấn mạnh "tất cả" */
+    }
+
+    .acts-of-love {
+      background-color: #f8bbd0; /* Nền hồng đậm hơn cho hành động */
+      color: #5c2842; /* Chữ màu đậm hơn trên nền hồng */
+      padding: 25px;
+      border-radius: 15px;
+      /* margin-top: 20px; Bỏ margin top nếu nó nằm trong section khác */
+      box-shadow: 0 5px 15px rgba(255, 126, 185, 0.4);
+    }
+    .acts-of-love h3 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      color: white; /* Chữ tiêu đề màu trắng cho dễ đọc trên nền hồng đậm */
+    }
+    .acts-of-love ul {
+      list-style: '💖 '; /* Dùng emoji trái tim làm dấu đầu dòng */
+      padding-left: 25px;
+      text-align: left;
+    }
+    .acts-of-love li {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    /* CSS cho "Nhà Thuốc Di Động" */
+    .mobile-pharmacy {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: var(--pharma-color); /* Màu xanh ngành dược */
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 201, 184, 0.3);
+    }
+    .mobile-pharmacy h3 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.7em;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    }
+    .mobile-pharmacy p {
+      font-size: 1.1em;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .mobile-pharmacy .icon {
+      font-size: 1.5em; /* Điều chỉnh kích thước icon nếu cần */
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, var(--love-color-1), var(--love-color-2));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px; /* Nút bo tròn hoàn toàn */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-weight: bold;
+      font-size: 1.05em;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .back-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(255, 126, 185, 0.4);
+    }
+    /* ... CSS hiện tại của bạn ... */
+
+    .mobile-pharmacy {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: var(--pharma-color); /* Màu xanh ngành dược */
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 201, 184, 0.3);
+    }
+    .mobile-pharmacy h3 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.7em;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    }
+    .mobile-pharmacy p {
+      font-size: 1.1em;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .mobile-pharmacy p strong {
+      font-weight: bold;
+    }
+    .mobile-pharmacy .icon {
+      font-size: 1.5em;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div class="profile-card">
+  <div class="heart-bg"> <!-- Lớp chứa các trái tim bay -->
+    <span>❤️</span><span>💖</span><span>💕</span><span>💓</span><span>💗</span>
+  </div>
+  <div class="content-wrapper"> <!-- Lớp chứa nội dung chính -->
+    <img class="avatar" src="img/ngochien_avatar_placeholder.png" alt="Ảnh đại diện Ngọc Hiền">
+
+    <h1>Ngọc Hiền</h1>
+    <p class="dob">🎂 Sinh ngày: 12/02/2003</p>
+    <p class="occupation">💊 Nghề nghiệp: Sinh viên ngành <strong>Dược</strong> (Bào chế tình yêu & Sức khỏe)</p>
+
+    <div class="section"> <!-- Section cho Triết lý sống -->
+      <h2 class="section-title">Triết Lý Sống "Vì Yêu"</h2>
+      <div class="life-philosophy">
+        <h3>Kim Chỉ Nam Cuộc Đời</h3>
+        <p>"<span class="highlight">BỒ EM LÀ TẤT CẢ</span> ❤️"</p>
+        <p>"Mọi thứ còn lại ư? Chỉ là <span style="text-decoration: line-through;">không quan trọng</span> tiểu tiết không đáng bận tâm!"</p>
+      </div>
+    </div>
+
+    <div class="section"> <!-- Section cho Hành động và Nhà thuốc -->
+      <h2 class="section-title">Minh Chứng Tình Yêu & Sứ Mệnh</h2>
+      <div class="acts-of-love">
+        <h3>Hành Động Nói Lên Tất Cả</h3>
+        <ul>
+          <li><strong>Ưu tiên số 1:</strong> Bạn gái là mặt trời, là trung tâm vũ trụ, là lý do Trái Đất vẫn quay.</li>
+          <li><strong>Hy sinh vô bờ:</strong> Nhịn ăn, nhịn uống, nhịn thở (nếu cần) chỉ để người yêu vui lòng.</li>
+          <li><strong>"Dạ, vâng, em yêu":</strong> Câu trả lời cho mọi thắc mắc, yêu cầu từ "nóc nhà".</li>
+          <li><strong>Chuyên gia chiều chuộng:</strong> Nắm bắt mọi sở thích, từ màu son đến món trà sữa yêu thích.</li>
+        </ul>
+      </div>
+
+      <div class="mobile-pharmacy"> <!-- THÊM PHẦN NÀY VÀO -->
+        <h3><span class="icon">⚕️</span>Nhà Thuốc Di Động 24/7</h3>
+        <p>
+          Không chỉ là người yêu lý tưởng, Ngọc Hiền còn là "nhà thuốc di động" của bạn!
+          Cần gì có đó, từ viên Panadol giảm đau đầu đến lời khuyên sức khỏe "chuẩn không cần chỉnh".
+          <strong>Sức khỏe của bạn là hạnh phúc của Hiền (sau bạn gái, tất nhiên!).</strong>
+        </p>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">💌 Trở Về Trang Chính 💌</a>
+  </div>
+</div>
+</body>
+</html>

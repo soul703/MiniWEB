@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HỒ SƠ ĐỐI TƯỢNG: TTT-001 (TRẦN THỦY TIÊN)</title> <!-- Tiêu đề kiểu hồ sơ -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Anonymous+Pro:wght@400;700&family=Cutive+Mono&display=swap');
+
+    :root {
+      --primary-text: #2c2c2c; /* Đen nhạt hơn */
+      --secondary-text: #5a5a5a;
+      --accent-mystery: #607d8b; /* Blue Grey - bí ẩn hơn */
+      --accent-investigation: #c62828; /* Đỏ đậm hơn cho điều tra */
+      --bg-color: #d7ccc8; /* Nâu xám nhạt - màu giấy cũ kỹ */
+      --card-bg: #efebe9; /* Nâu be rất nhạt */
+      --shadow: rgba(0, 0, 0, 0.2);
+      --border-color: #a1887f; /* Nâu xám cho viền */
+      --highlight-bg: rgba(255, 235, 59, 0.3); /* Vàng nhạt highlight như bút dạ */
+    }
+
+    body {
+      font-family: 'Cutive Mono', monospace; /* Font mono mới, cảm giác tài liệu hơn */
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    .profile-card-wrapper { /* Thêm lớp bọc ngoài để tạo hiệu ứng folder */
+      padding: 15px;
+      background-color: #c5b8b0; /* Màu bìa folder */
+      border-radius: 6px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+      transform: rotate(-1deg); /* Hơi nghiêng cho tự nhiên */
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 25px 30px 30px 30px; /* Tăng padding dưới */
+      border-radius: 3px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Bóng đổ bên trong */
+      width: 100%;
+      max-width: 620px; /* Tăng nhẹ */
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: visible; /* Cho phép con dấu tràn ra ngoài một chút */
+      transform: rotate(1deg); /* Nghiêng ngược lại với wrapper */
+    }
+
+    .stamp {
+      position: absolute;
+      font-family: 'Special Elite', cursive;
+      font-size: 1.7em;
+      color: var(--accent-investigation);
+      border: 3px double var(--accent-investigation);
+      padding: 6px 12px;
+      opacity: 0.75;
+      background-color: rgba(255,255,255,0.3); /* Nền mờ cho con dấu */
+      z-index: 2; /* Nổi lên trên */
+      user-select: none; /* Không cho chọn chữ */
+    }
+    .stamp.top-secret {
+      top: -15px; /* Tràn ra ngoài */
+      left: 10px;
+      transform: rotate(-12deg);
+    }
+    .stamp.classified {
+      bottom: 45px; /* Điều chỉnh lại vị trí */
+      right: -10px; /* Tràn ra ngoài */
+      transform: rotate(10deg);
+      font-size: 1.4em;
+    }
+    .stamp.under-surveillance { /* Con dấu mới */
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 1.3em;
+      padding: 8px 5px;
+      writing-mode: vertical-rl; /* Chữ dọc */
+      text-orientation: mixed;
+    }
+
+
+    .profile-card img.avatar {
+      width: 120px;
+      height: 150px; /* Chỉnh thành ảnh thẻ chữ nhật */
+      filter: grayscale(1) sepia(0.4) contrast(1.2) brightness(0.85); /* Cũ hơn nữa */
+      border-radius: 0; /* Không bo góc */
+      object-fit: cover;
+      object-position: center top; /* Ưu tiên phần đầu */
+      margin: 5px auto 15px auto;
+      border: 1px solid #777;
+      padding: 3px;
+      background-color: #ccc;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      display: block; /* Đảm bảo căn giữa */
+    }
+    .profile-card .photo-caption {
+      font-size: 0.8em;
+      color: var(--secondary-text);
+      margin-top: -10px;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .profile-card h1 {
+      font-family: 'Special Elite', cursive;
+      font-size: 2.3em; /* Giảm nhẹ */
+      color: var(--primary-text);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px; /* Tăng khoảng cách chữ */
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 5px;
+    }
+
+    .profile-card .case-id {
+      font-family: 'Anonymous Pro', monospace;
+      font-size: 1em;
+      color: var(--secondary-text);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .info-grid { /* Sử dụng grid để sắp xếp thông tin */
+      display: grid;
+      grid-template-columns: 1fr 2fr; /* 1 phần cho nhãn, 2 phần cho nội dung */
+      gap: 8px 15px; /* Khoảng cách giữa các hàng và cột */
+      text-align: left;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #ccc;
+    }
+    .info-grid dt {
+      font-weight: 700;
+      color: var(--primary-text);
+      text-transform: uppercase;
+      font-size: 0.85em;
+      letter-spacing: 0.5px;
+      padding-top: 2px; /* Căn chỉnh với dd */
+    }
+    .info-grid dd {
+      margin-left: 0;
+      font-size: 1em;
+      color: var(--secondary-text);
+    }
+    .info-grid dd .highlight {
+      background-color: var(--highlight-bg); /* Highlight như bút dạ */
+      padding: 0 3px;
+      font-weight: bold;
+      color: var(--accent-investigation);
+    }
+    .info-grid dd .confidential {
+      font-style: italic;
+      color: var(--accent-mystery);
+      letter-spacing: 1px; /* Chữ cách xa nhau hơn */
+    }
+    .info-grid dd .subject-link { /* Đổi tên class */
+      color: var(--accent-mystery);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent-mystery);
+      cursor: help;
+    }
+
+
+    .investigation-log { /* Đổi tên class */
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fafafa; /* Nền trắng hơn chút */
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      text-align: left;
+    }
+    .investigation-log h3 {
+      font-family: 'Special Elite', cursive;
+      font-size: 1.3em;
+      color: var(--accent-investigation);
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--accent-investigation);
+      padding-bottom: 3px;
+    }
+    .investigation-log ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .investigation-log li {
+      margin-bottom: 10px;
+      padding-left: 22px;
+      position: relative;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    .investigation-log li::before {
+      content: '>'; /* Dấu > kiểu command line */
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: var(--accent-investigation);
+      font-weight: 700;
+      font-family: monospace; /* Đảm bảo dấu > đẹp */
+    }
+    .investigation-log .critical {
+      font-weight: bold;
+      color: var(--accent-investigation);
+      text-transform: uppercase;
+    }
+
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color: #78909c; /* Blue Grey đậm hơn */
+      color: white;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background-color 0.3s ease;
+      font-family: 'Anonymous Pro', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      border: 1px outset #546e7a;
+    }
+
+    .back-link:hover {
+      background-color: #546e7a; /* Đậm hơn khi hover */
+      border-style: inset;
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-card-wrapper"> <!-- Bọc ngoài hồ sơ -->
+  <div class="profile-card">
+    <div class="stamp top-secret">TOP SECRET</div>
+    <div class="stamp classified">CLASSIFIED</div>
+    <div class="stamp under-surveillance">UNDER SURVEILLANCE</div> <!-- Con dấu mới -->
+
+    <img class="avatar" src="img/thuytien_avatar_placeholder.png" alt="[Ảnh nhận dạng đối tượng]">
+    <p class="photo-caption">[Nguồn ảnh: Chưa xác thực - Ngày chụp: Không rõ]</p>
+
+    <h1>TRẦN THỦY TIÊN</h1>
+    <p class="case-id">MÃ HỒ SƠ: TTT-001 // TÌNH TRẠNG: ĐANG THEO DÕI</p>
+
+    <div class="info-grid">
+      <dt>Ngày Sinh:</dt>
+      <dd class="confidential">[BẢO MẬT CẤP ĐỘ CAO]. Nhân chứng duy nhất: Đối tượng <span class="subject-link" title="Nguyễn Cửu An - Mã hồ sơ: NCA-007">[An]</span>.</dd>
+
+      <dt>Chuyên Môn Đăng Ký:</dt>
+      <dd>Sinh viên Kế Toán. Ghi nhận thường xuyên hoạt động cùng đối tượng <span class="subject-link" title="Nguyễn Cửu An - Sinh viên Kế Toán">[An]</span> tại cơ sở đào tạo.</dd>
+
+      <dt>Quan Sát Ban Đầu (Nguồn: Chủ Web):</dt>
+      <dd>Tương tác hạn chế. Giao tiếp <span class="highlight">chỉ vài từ đơn lẻ</span>. Đánh giá thái độ: <span class="confidential">[ĐANG XEM XÉT]</span>.</dd>
+    </div>
+
+    <div class="investigation-log">
+      <h3>NHẬT KÝ THEO DÕI - CẬP NHẬT LIÊN TỤC:</h3>
+      <ul>
+        <li>Hành vi di chuyển: Thường xuyên rời khỏi và quay lại cơ sở (nơi ở/học tập) <span class="highlight">ngoài giờ quy định</span> (đi sớm, về muộn).</li>
+        <li>Lịch trình buổi trưa: <span class="highlight">Hoàn toàn biến mất</span> trong khoảng 11:30 - 13:30 hàng ngày. Địa điểm và mục đích <span class="confidential">[CHƯA RÕ]</span>.</li>
+        <li>Đánh giá rủi ro: Hành tung <span class="highlight">KHÓ LƯỜNG</span>. Có khả năng liên quan đến các hoạt động không được khai báo.</li>
+        <li>Liên hệ với đối tượng <span class="subject-link" title="Nguyễn Cửu An - Nghi vấn đồng lõa hoặc bị lợi dụng?">[An]</span>: Cần làm rõ bản chất mối quan hệ. Có thể là vỏ bọc cho các hoạt động khác.</li>
+        <li class="critical">YÊU CẦU TIẾP TỤC GIÁM SÁT 24/7 - BÁO CÁO NGAY KHI CÓ PHÁT HIỆN MỚI!</li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="back-link">« KẾT THÚC TRUY CẬP HỒ SƠ</a>
+  </div>
+</div>
+</body>
+</html>

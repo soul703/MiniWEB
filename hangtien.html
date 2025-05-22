@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cặp Đôi "Trầm Lặng": Hằng ♥ Tiến</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@400;700&family=Poppins:wght@300;500&family=Quattrocento:wght@400;700&display=swap');
+
+    :root {
+      --primary-text: #3a3a3a;
+      --secondary-text: #6b6b6b;
+      --love-accent-1: #b2a2c7; /* Tím lavender pastel */
+      --love-accent-2: #8c7aa5; /* Tím đậm hơn */
+      --arch-color: #77aaff; /* Xanh dương nhạt cho kiến trúc (Tiến) */
+      --econ-color: #ffc107; /* Vàng cho kinh tế (Hằng) */
+      --bg-color: #f5f3f7; /* Nền tím rất nhạt */
+      --card-bg: #ffffff;
+      --shadow: rgba(140, 122, 165, 0.2); /* Bóng tím nhạt */
+      --border-soft: #e6e0ec; /* Viền tím nhạt */
+      --webmaster-note-bg: #e3f2fd;
+      --webmaster-note-border: #90caf9;
+      --webmaster-note-text: #1e3a56;
+      --heartbreak-red: #ef9a9a; /* Đỏ hồng nhạt hơn cho sự tế nhị */
+      --quiet-highlight: #d1c4e9;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 30px 35px 35px 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px var(--shadow);
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+      border: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '🎶';
+      font-size: 15em;
+      color: var(--love-accent-1);
+      opacity: 0.07;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(10deg);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .couple-names {
+      font-family: 'Parisienne', cursive;
+      font-size: 4.5em;
+      color: var(--love-accent-2);
+      margin-bottom: 0px;
+      line-height: 1.1;
+    }
+    .couple-names .ampersand {
+      font-size: 0.7em;
+      color: var(--love-accent-1);
+    }
+
+    .couple-dob, .couple-occupation {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1em;
+      color: var(--secondary-text);
+      margin-bottom: 15px;
+    }
+    .couple-dob strong {
+      color: var(--love-accent-2);
+      font-weight: 700;
+    }
+    .couple-occupation .hang-job { color: var(--econ-color); font-weight: 500; }
+    .couple-occupation .tien-job { color: var(--arch-color); font-weight: 500; }
+
+
+    .section {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border-soft);
+    }
+    .section:first-of-type { border-top: none; padding-top: 0;}
+
+    .section-title {
+      font-family: 'Quattrocento', serif;
+      font-weight: 700;
+      font-size: 1.8em;
+      color: var(--primary-text);
+      margin-bottom: 15px;
+      display: inline-block;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--love-accent-1);
+    }
+
+    .personalities, .special-bond {
+      background-color: rgba(245, 243, 247, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-soft);
+    }
+    .personalities h3, .special-bond h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3em;
+      color: var(--love-accent-2);
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .personalities p, .special-bond p {
+      margin-bottom: 8px;
+      font-size: 1.05em;
+    }
+    .personalities .highlight {
+      font-weight: 700;
+      background-color: var(--quiet-highlight);
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: var(--primary-text);
+    }
+    .personalities .scale {
+      font-family: 'Parisienne', cursive;
+      font-size: 1.6em;
+      margin-left: 5px;
+      color: var(--love-accent-2);
+    }
+    .personalities .versus {
+      font-size:1.5em;
+      color:var(--love-accent-1);
+      vertical-align: middle;
+      margin: 0 10px;
+    }
+
+    .special-bond .highlight {
+      font-weight: 700;
+      color: var(--primary-text);
+    }
+
+    .webmaster-note {
+      margin-top: 30px;
+      padding: 20px 25px;
+      background-color: var(--webmaster-note-bg);
+      color: var(--webmaster-note-text);
+      border-radius: 12px;
+      border: 1px solid var(--webmaster-note-border);
+      text-align: center; /* Căn giữa nội dung note */
+      font-style: italic;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .webmaster-note h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--love-accent-2);
+      display: inline-block; /* Cho tiêu đề không chiếm hết dòng */
+    }
+    .webmaster-note .icon { /* Icon cho tiêu đề */
+      font-size: 1.2em; /* Kích thước icon bằng chữ */
+      margin-right: 5px;
+      color: var(--heartbreak-red);
+      vertical-align: baseline; /* Căn chỉnh icon với chữ */
+    }
+
+    .webmaster-note p {
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 15px; /* Tăng khoảng cách */
+    }
+    .webmaster-note .short-story { /* Class cho câu chuyện ngắn */
+      color: #546e7a; /* Xám xanh đậm hơn */
+      display: block; /* Cho xuống dòng riêng */
+      margin-bottom: 15px;
+    }
+    .webmaster-note .status-highlight {
+      font-weight: bold;
+      color: var(--heartbreak-red);
+      font-style: normal;
+    }
+    .webmaster-note .wish {
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1em;
+      color: var(--love-accent-2);
+      font-style: normal; /* Bỏ italic cho lời chúc */
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, var(--love-accent-1), var(--love-accent-2));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 700;
+      font-size: 1em;
+      box-shadow: 0 4px 10px var(--shadow);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .back-link:hover {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 6px 15px rgba(140, 122, 165, 0.3);
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-card">
+  <div class="content-wrapper">
+
+    <h1 class="couple-names">
+      Lê Thúy Hằng <span class="ampersand">&</span> Quốc Tiến
+    </h1>
+    <p class="couple-dob">
+      🎂 Sinh nhật "Định Mệnh": <strong>Ngày Đôi - Tháng Đôi - Năm Đôi</strong> (Vẫn là một sự sắp đặt hoàn hảo!)
+    </p>
+    <p class="couple-occupation">
+      🎓 Chuyên ngành:
+      <span class="hang-job">Chuyên Gia Kinh Tế (Hằng)</span> &
+      <span class="tien-job">Kiến Trúc Sư Tài Ba (Tiến)</span>
+    </p>
+
+    <div class="section">
+      <h2 class="section-title">Sự Đồng Điệu Trong Tĩnh Lặng</h2>
+      <div class="personalities">
+        <h3>"Trầm" Nhưng Không "Chìm":</h3>
+        <p>
+          <span class="highlight">Lê Thúy Hằng</span> (Trầm tính <span class="scale">x1</span>)
+          <span class="versus">🤝</span>
+          <span class="highlight">Quốc Tiến</span> (Siêu trầm tính <span class="scale">x10</span>)
+        </p>
+        <p><em>(Khi hai tâm hồn "hướng nội" tìm thấy nhau, thế giới bỗng trở nên sâu lắng lạ thường!)</em></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Mối Liên Kết Bền Chặt</h2>
+      <div class="special-bond">
+        <h3>"Có Đôi Có Cặp - Không Thể Lìa Xa"</h3>
+        <p>Như hai nốt nhạc trầm trong cùng một bản giao hưởng, sự gắn kết của Hằng và Tiến <span class="highlight">thầm lặng mà mạnh mẽ</span>.</p>
+        <p>Họ tìm thấy sự bình yên và thấu hiểu trong không gian riêng của cả hai.</p>
+      </div>
+    </div>
+
+    <div class="webmaster-note">
+      <h3><span class="icon">💌</span> Lời Nhắn Ngắn Từ Chủ Web:</h3>
+      <p>
+        Nhìn hai bạn thật hạnh phúc!
+        <span class="short-story">Còn chủ web thì... à ừm, chuyện tình cảm dạo này hơi <span class="status-highlight">"toang"</span> một chút thôi, không sao đâu! (⁄ ⁄•⁄ω⁄•⁄ ⁄)</span>
+        (Bạn gì đấy coi chừng tôi đấy nhé!!!!)
+      </p>
+
+      <p class="wish">
+        Dù thế nào, vẫn xin chúc phúc cho Lê Thúy Hằng & Quốc Tiến mãi <strong style="color: var(--love-accent-2);">an yên, hạnh phúc và xây dựng một "kiến trúc tình yêu"
+        thật vững chãi nhé!</strong> 🏛️💖<br>
+      </p>
+    </div>
+
+    <a href="index.html" class="back-link">« Về Trang Chủ (Với Một Chút Ghen Tị Nhẹ)</a>
+  </div>
+</div>
+</body>
+</html>

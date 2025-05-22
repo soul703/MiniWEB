@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nữ Cường Nhân: Đinh Thị Hiếu Thảo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@700&display=swap');
+
+    :root {
+      --primary-text: #333d4b; /* Xám than chì */
+      --secondary-text: #5f6c7b;
+      --accent-money: #f9a825; /* Vàng cam - màu của tiền bạc, năng lượng */
+      --accent-power: #c62828; /* Đỏ đậm - màu của "đàn áp", quyền lực */
+      --accent-respect: #2e7d32; /* Xanh lá cây đậm - màu của sự tôn trọng */
+      --bg-color: #e8eaf6; /* Xanh lavender nhạt */
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.15);
+      --border-light: #d1c4e9; /* Tím nhạt cho viền */
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .profile-card {
+      background-color: var(--card-bg);
+      padding: 35px 40px;
+      border-radius: 12px; /* Bo góc vuông vắn, mạnh mẽ */
+      box-shadow: 0 10px 35px var(--shadow);
+      width: 100%;
+      max-width: 650px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .profile-card img.avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px; /* Ảnh bo góc vuông, đồng bộ với card */
+      object-fit: cover;
+      margin: 10px auto 20px auto;
+      border: 5px solid var(--card-bg);
+      box-shadow: 0 0 0 4px var(--accent-money), 0 5px 15px rgba(0,0,0,0.2); /* Viền vàng và bóng */
+    }
+
+    .profile-card h1 {
+      font-family: 'Merriweather', serif;
+      font-weight: 900; /* Rất đậm */
+      font-size: 2.9em;
+      color: var(--primary-text);
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .profile-card .dob, .profile-card .occupation-title {
+      font-size: 1.1em;
+      color: var(--secondary-text);
+      margin-bottom: 10px;
+    }
+    .profile-card .occupation-title .occupation-highlight {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5em; /* To hơn, bay bổng */
+      color: var(--accent-money);
+      font-weight: 700;
+      display: block; /* Cho xuống dòng nếu cần */
+      margin-top: 5px;
+    }
+
+    .section {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border-light);
+    }
+    .section:first-of-type { border-top: none; padding-top: 0; }
+
+
+    .section-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 1.8em;
+      color: var(--primary-text);
+      margin-bottom: 20px;
+      display: inline-block;
+      padding-bottom: 5px;
+      border-bottom: 3px solid var(--accent-money); /* Gạch chân vàng đậm */
+    }
+
+    .character-traits, .financial-status, .special-recognition {
+      background-color: #f7f7f7; /* Nền xám rất nhạt cho các box */
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: left;
+      border-left: 5px solid; /* Viền trái màu đặc trưng */
+    }
+
+    .character-traits { border-left-color: var(--accent-power); }
+    .character-traits h3 { color: var(--accent-power); }
+
+    .financial-status { border-left-color: var(--accent-money); }
+    .financial-status h3 { color: var(--accent-money); }
+
+    .special-recognition { border-left-color: var(--accent-respect); }
+    .special-recognition h3 { color: var(--accent-respect); }
+
+
+    .character-traits h3, .financial-status h3, .special-recognition h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.4em;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .character-traits p, .financial-status p, .special-recognition p {
+      margin-bottom: 8px;
+      font-size: 1.05em;
+    }
+    .character-traits .highlight, .financial-status .highlight, .special-recognition .highlight {
+      font-weight: bold;
+    }
+
+
+    .work-ethic {
+      font-family: 'Open Sans', sans-serif;
+      font-style: italic;
+      font-size: 1.1em;
+      color: var(--secondary-text);
+      margin-top: 15px;
+      padding: 10px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .work-ethic strong {
+      color: var(--primary-text);
+      font-style: normal;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 28px;
+      background: linear-gradient(45deg, var(--accent-power), var(--accent-money));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+      font-weight: bold;
+      font-size: 1.05em;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+
+    .back-link:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-card">
+  <img class="avatar" src="img/hieuthao_avatar_placeholder.png" alt="Ảnh đại diện Đinh Thị Hiếu Thảo">
+
+  <h1>Đinh Thị Hiếu Thảo</h1>
+  <p class="dob">📅 Sinh ngày: 16/06/2002</p>
+  <p class="occupation-title">
+    Nghề nghiệp:
+    <span class="occupation-highlight">"Bậc Thầy Kiếm Tiền Đa Ngành"</span>
+    (Làm bất cứ việc gì ra tiền!)
+  </p>
+
+  <div class="section">
+    <h2 class="section-title">Bản Lĩnh & Trí Tuệ</h2>
+    <div class="character-traits">
+      <h3><span style="font-size:1.2em;">🧠</span> Thông Minh & Sắc Sảo</h3>
+      <p><span class="highlight">"Đàn áp" bạn trai:</span> Bằng lý lẽ và sự đáng yêu (có lẽ thế).</p>
+      <p>Luôn biết cách đạt được mục tiêu, dù bằng cách nào!</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Tình Hình Tài Chính "Biến Động"</h2>
+    <div class="financial-status">
+      <h3><span style="font-size:1.2em;">💸</span> Con Nợ Quốc Dân & Tay Hòm Chìa Khóa</h3>
+      <p><span class="highlight">Nợ nần chồng chất:</span> Nhưng không bao giờ đầu hàng số phận!</p>
+      <p><span class="highlight">Giỏi kiếm tiền:</span> Khả năng "xoay xở" thượng thừa, biến không thành có.</p>
+    </div>
+    <p class="work-ethic">
+      "Làm việc từ <strong>sáng sớm tinh mơ</strong> đến <strong>tối mịt canh thâu</strong> để trả nợ và xây dựng tương lai!"
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Sự Công Nhận Đặc Biệt</h2>
+    <div class="special-recognition">
+      <h3><span style="font-size:1.2em;">🌟</span> Trong Mắt Chủ Web</h3>
+      <p>Một nhân tố <span class="highlight">vô cùng quan trọng</span>, không thể thiếu.</p>
+      <p>Chủ web <span class="highlight">rất coi trọng</span> sự nỗ lực, thông minh và ý chí của Thảo.</p>
+      <p><em>(Dù đôi khi cũng hơi "đau đầu" với những khoản nợ của Thảo!)</em> 😉</p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Quay Lại Danh Sách "Nhân Tài"</a>
+</div>
+
+</body>
+</html>
